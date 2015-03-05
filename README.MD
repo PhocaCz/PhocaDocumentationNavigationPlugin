@@ -1,0 +1,1 @@
+Phoca Documentation Navigation Plugin is Joomla! CMS extension. Plugin which displays navigation for documents.
