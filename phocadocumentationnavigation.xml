@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension type="plugin" group="content" method="upgrade" version="3">
+	<name>Phoca Documentation Navigation Plugin</name>
+	<creationDate>25/04/2014</creationDate>
+	<author>Jan Pavelka (www.phoca.cz)</author>
+	<authorEmail></authorEmail>
+	<authorUrl>www.phoca.cz</authorUrl>
+	<copyright>Jan Pavelka</copyright>
+	<license>GNU/GPL</license>
+	<version>3.0.1</version>
+
+	
+	<description>PLG_CONTENT_PHOCADOCUMENTATIONNAVIGATION_DESCRIPTION</description>
+
+	
+	<files>
+		<filename plugin="phocadocumentationnavigation">phocadocumentationnavigation.php</filename>
+		<filename plugin="phocadocumentationnavigation">phocadocumentationnavigation.xml</filename>
+	</files>
+	
+	<languages>
+		<language tag="en-GB">language/en-GB/en-GB.plg_content_phocadocumentationnavigation.ini</language>
+	</languages>
+	<administration>
+		<languages>
+			<language tag="en-GB">language/en-GB/en-GB.plg_content_phocadocumentationnavigation.ini</language>
+		</languages>
+	</administration>
+</extension>
