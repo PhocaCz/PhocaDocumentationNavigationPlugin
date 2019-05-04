@@ -13,7 +13,6 @@
 
 	<files>
 		<filename plugin="phocadocumentationnavigation">index.html</filename>
-		<filename plugin="phocadocumentationnavigation">manifest.xml</filename>
 		<filename plugin="phocadocumentationnavigation">phocadocumentationnavigation.php</filename>
 	</files>
 

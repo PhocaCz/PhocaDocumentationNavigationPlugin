@@ -34,6 +34,7 @@ class plgContentPhocaDocumentationNavigation extends JPlugin
 		}
 
 		require_once( JPATH_ROOT.'/components/com_phocadocumentation/helpers/route.php' );
+		require_once( JPATH_ROOT.'/components/com_phocadocumentation/helpers/phocadocumentation.php' );
 		require_once( JPATH_ADMINISTRATOR.'/components/com_phocadocumentation/helpers/phocadocumentationnavigation.php' );
 
 		$document				= JFactory::getDocument();
