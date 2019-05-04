@@ -1,0 +1,18 @@
+{
+	"author": "Jan Pavelka (www.phoca.cz)",
+	"authorUrl": "https://www.phoca.cz",
+	"copyright": "Jan Pavelka",
+	"license": "GNU/GPL",
+	"projectName": "PhocaDocumentationNavigationPlugin",
+	"extensionName": "Phoca Documentation Navigation Plugin",
+	"projectInitials" : "PD",
+	"description": "Phoca Documentation Navigation Plugin is a Joomla! plugin which displays navigation for Phoca Documentation component in articles.",
+	"projectUrl": "https://www.phoca.cz/phocadocumentation-navigation",
+	"projectDocumentationUrl": "https://www.phoca.cz/documentation/category/7-phoca-documentation-navigation-plugin",
+	"projectMainComponent": "Phoca Documentation",
+	"projectMainComponentInfoUrl": "https://www.phoca.cz/project/phocadocumentation-joomla-download",
+	"projectDemo" : {
+		"Joomla! 3 Demo": "https://www.phoca.cz/documentation"
+	},
+	"projectColor": "#0099ff"
+}
