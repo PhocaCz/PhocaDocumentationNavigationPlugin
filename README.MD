@@ -16,7 +16,7 @@ Phoca Documentation Navigation Plugin is a Joomla! plugin which displays navigat
 
 [Phoca Documentation Navigation Plugin](https://www.phoca.cz/phocadocumentation-navigation)
 
-[Phoca Documentation Info Page](https://www.phoca.cz/project/phocadocumentation-joomla-download)
+[Phoca Documentation Info Page](https://www.phoca.cz/project/phocadocumentation-joomla-documentation)
 
 
 
