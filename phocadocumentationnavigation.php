@@ -8,6 +8,9 @@
  * {phocadocumentation view=navigation|type=mpcn}
  * {phocadocumentation view=navigation|type=ptn|top=site}
  */
+
+use Joomla\CMS\HTML\HTMLHelper;
+
 defined( '_JEXEC' ) or die( 'Restricted access' );
 
 jimport( 'joomla.plugin.plugin' );
@@ -28,25 +31,23 @@ class plgContentPhocaDocumentationNavigation extends JPlugin
 			return true;
 		}
 
-		if (!JComponentHelper::isEnabled('com_phocadocumentation', true)) {
-			echo '<div class="alert alert-danger">'.JText::_('PLG_CONTENT_PHOCADOCUMENTATIONNAVIGATION_COMPONENT_NOT_INSTALLED').'</div>';
-			return;
-		}
-
-		require_once( JPATH_ROOT.'/components/com_phocadocumentation/helpers/route.php' );
-		require_once( JPATH_ROOT.'/components/com_phocadocumentation/helpers/phocadocumentation.php' );
-		require_once( JPATH_ADMINISTRATOR.'/components/com_phocadocumentation/helpers/phocadocumentationnavigation.php' );
-
 		$document				= JFactory::getDocument();
 		$component 				= 'com_phocadocumentation';
-		$t						= array();
-		$pC	 					= JComponentHelper::getParams($component);
-		$t['article_itemid']	= $pC->get( 'article_itemid', '' );
-		$css					= $pC->get( 'theme', 'phocadocumentation-grey' );
-		JPlugin::loadLanguage( 'plg_content_phocadocumentationnavigation' );
 
-		if ($css == 'phocadocumentation-bootstrap') {$bts = 1;} else {$bts = 0;}
-		JHTML::stylesheet('media/com_phocadocumentation/css/'.$css.'.css' );
+		JPlugin::loadLanguage( 'plg_content_phocadocumentationnavigation' );
+		require_once( JPATH_ROOT.'/plugins/content/phocadocumentationnavigation/helpers/phocadocumentationnavigation.php' );
+
+
+		//HTMLHelper::_('bootstrap.tooltip', '.hasTooltip', array('placement' => 'bottom'));
+		HTMLHelper::_('bootstrap.popover', '.hasPopover', array('placement' => 'top'));
+
+		$pdoc       	= new stdClass();
+		$pdoc->svg_path = HTMLHelper::image('com_phocadocumentation/svg-definitions.svg', '', [], true, 1);
+		$wa         	= $document->getWebAssetManager();
+		$wa->registerAndUseStyle('com_phocadocumentation.main', 'media/com_phocadocumentation/css/main.css', array('version' => 'auto'));
+		$wa->registerAndUseScript('plg_phocadocumentationnavigation.main', 'media/plg_content_phocadocumentationnavigation/js/main.js', array('version' => 'auto'));
+
+
 
 		// Start Plugin
 		$regex_one		= '/({phocadocumentation\s*)(.*?)(})/si';
@@ -83,11 +84,8 @@ class plgContentPhocaDocumentationNavigation extends JPlugin
 
 			}
 
-
-
-
 			$output  = '';
-			$output .= '<div class="phocadocumentation-navigation">' . "\n";
+			$output .= '<div class="plg-phocadocumentationnavigation pdoc-nav-box">' . "\n";
 
 
 			// -------------------------
@@ -95,21 +93,14 @@ class plgContentPhocaDocumentationNavigation extends JPlugin
 			// -------------------------
 			if ($view == 'navigation') {
 
-				// -------------------------------------------
-				// PARAMS
-				$oL['fgcolor']		= '#fafafa';
-				$oL['bgcolor']		= '#fafafa';
-				$oL['textcolor']	= '#000000';
-				$oL['capcolor']		= '#000000';
-				$oL['closecolor']	= '#000000';
-
-				$document->addCustomTag('<script type="text/javascript" src="'.JURI::root().'components/com_phocadocumentation/assets/overlib/overlib_mini.js"></script>');
 
 				$d = PhocaDocumentationNavigation::getDocuments();
-				$prevOutput = PhocaDocumentationNavigation::getPrevOutput($d['prev'], $oL, $t['article_itemid'], $bts);
-				$nextOutput = PhocaDocumentationNavigation::getNextOutput($d['next'], $oL, $t['article_itemid'], $bts);
-				$topOutput 	= PhocaDocumentationNavigation::getTopOutput($d['doc'], $oL, $topid, $t['article_itemid'], $bts);
-				$listOutput = PhocaDocumentationNavigation::getListOutput($d['list'], $d['doc'], $oL, $t['article_itemid'], $bts);
+				$paramsNav = [];
+				$paramsNav['svg_path'] = HTMLHelper::image('com_phocadocumentation/svg-definitions.svg', '', [], true, 1);
+				$prevOutput = PhocaDocumentationNavigation::getPrevOutput($d['prev'], $paramsNav);
+				$nextOutput = PhocaDocumentationNavigation::getNextOutput($d['next'], $paramsNav);
+				$topOutput 	= PhocaDocumentationNavigation::getTopOutput($d['doc'], $paramsNav, $topid);
+				$listOutput = PhocaDocumentationNavigation::getListOutput($d['list'], $d['doc'], $paramsNav);
 
 				//Possible Hardcode
 				//$header		= JText::_('PLG_CONTENT_PHOCADOCUMENTATIONNAVIGATION_NAVIGATION');
@@ -127,23 +118,14 @@ class plgContentPhocaDocumentationNavigation extends JPlugin
 				$next 		= preg_match("/n/i", $type);
 				$top 		= preg_match("/t/i", $type);
 				$content	= preg_match("/c/i", $type);
-				$sep		= ' <b style="color:#ccc;">&bull;</b> ';
+				$sep		= ' <div class="pdoc-nav-sep">&bull;</div> ';
 				$sepPrev	= 0;
 
 				if ($main) {
-					if ($bts == 1) {
-						$output .= '<div class="navigation-text" id="pdoc-top"><h5>'.JText::_('PLG_CONTENT_PHOCADOCUMENTATIONNAVIGATION_NAVIGATION') . '</h5>'."\n";
-					} else {
-						$output .= '<div class="navigation-text" id="pdoc-top"><div><div><div><h5>'.JText::_('PLG_CONTENT_PHOCADOCUMENTATIONNAVIGATION_NAVIGATION') . '</h5>'."\n";
-						$output .= '<div>';
-					}
+					$output .= '<div class="navigation-text" id="pdoc-top"><h5>'.JText::_('PLG_CONTENT_PHOCADOCUMENTATIONNAVIGATION_NAVIGATION') . '</h5>'."\n";
+
 				} else {
-					if ($bts == 1) {
-						$output .= '<div class="navigation-text" >'."\n";
-					} else {
-						$output .= '<div class="navigation-text" ><div><div><div>'."\n";
-						$output .= '<div>';
-					}
+					$output .= '<div class="navigation-text" >'."\n";
 				}
 				if ($prev) {
 					$output .= $prevOutput;
@@ -171,14 +153,10 @@ class plgContentPhocaDocumentationNavigation extends JPlugin
 					$sepPrev = 1;
 				}
 
-
-
 			}
-			if ($bts == 1) {
-				$output .= '</div></div>';
-			} else {
-				$output .= '</div></div></div></div></div></div>';
-			}
+
+			$output .= '</div></div>';
+
 
 			$article->text = preg_replace($regex_all, $output, $article->text, 1);
 		}

@@ -2,7 +2,7 @@
 
 
 
-![Phoca Documentation Navigation Plugin](https://github.com/PhocaCz/PhocaDocumentationNavigationPlugin/blob/master/phocadocumentationnavigation.png)
+![Phoca Documentation Navigation Plugin](https://github.com/PhocaCz/PhocaDocumentationNavigationPlugin/blob/master/phocadocumentationnavigation.png?raw=true)
 
 # Phoca Documentation Navigation Plugin
 
@@ -23,6 +23,8 @@ Phoca Documentation Navigation Plugin is a Joomla! plugin which displays navigat
 ## Documentation
 
 [Documentation](https://www.phoca.cz/documentation/category/7-phoca-documentation-navigation-plugin)
+
+
 
 
 
@@ -50,9 +52,13 @@ Phoca Documentation Navigation Plugin is a Joomla! plugin which displays navigat
 
 
 
-## Version
+## Version (Joomla! 3.x)
 
 3.0.3
+
+## Version (Joomla! 4.x)
+
+4.0.0
 
 
 
