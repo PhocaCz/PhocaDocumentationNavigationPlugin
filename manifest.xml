@@ -1,3 +1,4 @@
+<?xml version="1.0" ?>
 <updates>
 	<update>
 		<name><![CDATA[ Phoca Documentation Navigation Plugin ]]></name>
@@ -36,7 +37,28 @@
 		<maintainer><![CDATA[ Phoca.cz ]]></maintainer>
 		<maintainerurl>https://www.phoca.cz/</maintainerurl>
 		<section>Updates</section>
-		<targetplatform name="joomla" version="4.[012]"/>
+		<targetplatform name="joomla" version="4\.*"/>
+		<client>site</client>
+	</update>
+	<update>
+		<name><![CDATA[ Phoca Documentation Navigation Plugin ]]></name>
+		<description><![CDATA[ Phoca Documentation Navigation Plugin is a Joomla! plugin which displays navigation for Phoca Documentation component in articles. ]]></description>
+		<element>phocadocumentationnavigation</element>
+		<folder>content</folder>
+		<type>plugin</type>
+		<version>5.0.0</version>
+		<infourl title="Phoca Documentation Navigation Plugin 5.0.0">https://www.phoca.cz/</infourl>
+		<downloads>
+			<downloadurl type="full" format="zip">https://github.com/PhocaCz/PhocaDocumentationNavigationPlugin/releases/download/5.0.0/plg_content_phocadocumentationnavigation_v5.0.0.zip</downloadurl>
+		</downloads>
+		<sha512>6134d1c02e39bdfcc22d5379a898553049bcd188385fe7f8dcaecb7a3facc2d2b2edb94fdce915673973dc13e1539751a0b1da459f87442490be1e8f8ca1390b</sha512>
+		<tags>
+			<tag>stable</tag>
+		</tags>
+		<maintainer><![CDATA[ Phoca.cz ]]></maintainer>
+		<maintainerurl>https://www.phoca.cz/</maintainerurl>
+		<section>Updates</section>
+		<targetplatform name="joomla" version="(4|5)\.*"/>
 		<client>site</client>
 	</update>
 </updates>

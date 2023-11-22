@@ -9,14 +9,17 @@
  * {phocadocumentation view=navigation|type=ptn|top=site}
  */
 
+use Joomla\CMS\Factory;
 use Joomla\CMS\HTML\HTMLHelper;
+use Joomla\CMS\Language\Text;
+use Joomla\CMS\Plugin\CMSPlugin;
 
 defined( '_JEXEC' ) or die( 'Restricted access' );
 
 jimport( 'joomla.plugin.plugin' );
 
 
-class plgContentPhocaDocumentationNavigation extends JPlugin
+class plgContentPhocaDocumentationNavigation extends CMSPlugin
 {
 
 	public function __construct(& $subject, $config) {
@@ -31,10 +34,10 @@ class plgContentPhocaDocumentationNavigation extends JPlugin
 			return true;
 		}
 
-		$document				= JFactory::getDocument();
+		$document				= Factory::getDocument();
 		$component 				= 'com_phocadocumentation';
 
-		JPlugin::loadLanguage( 'plg_content_phocadocumentationnavigation' );
+		CMSPlugin::loadLanguage( 'plg_content_phocadocumentationnavigation' );
 		require_once( JPATH_ROOT.'/plugins/content/phocadocumentationnavigation/helpers/phocadocumentationnavigation.php' );
 
 
@@ -122,7 +125,7 @@ class plgContentPhocaDocumentationNavigation extends JPlugin
 				$sepPrev	= 0;
 
 				if ($main) {
-					$output .= '<div class="navigation-text" id="pdoc-top"><h5>'.JText::_('PLG_CONTENT_PHOCADOCUMENTATIONNAVIGATION_NAVIGATION') . '</h5>'."\n";
+					$output .= '<div class="navigation-text" id="pdoc-top"><h5>'.Text::_('PLG_CONTENT_PHOCADOCUMENTATIONNAVIGATION_NAVIGATION') . '</h5>'."\n";
 
 				} else {
 					$output .= '<div class="navigation-text" >'."\n";
