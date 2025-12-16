@@ -21,6 +21,7 @@ jimport( 'joomla.plugin.plugin' );
 
 class plgContentPhocaDocumentationNavigation extends CMSPlugin
 {
+	protected $autoloadLanguage = true;
 
 	public function __construct(& $subject, $config) {
 		parent::__construct($subject, $config);
